@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/processsearch}" method="post">
+    <input type="text" placeholder="Search by Begin Airport.." name="search">
+    <button type="submit">Search</button>
+    <br /><br />
+    <input type="text" placeholder="Search by Ending Airport.." name="search2">
+    <button type="submit">Search</button>
+</form>
+<br />
+<br />
+<a href="/add">Add a Flight</a>
+<h2>All Flights</h2>
+<div th:each="flight : ${flights}">
+    <p th:text="${flight.beginAirport}"></p>
+    <p th:text="${flight.endingAirport}"></p>
+    <p th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></p>
+    <p th:text="${flight.price}"></p>
+    <p th:text="${flight.airlineName}"></p>
+</div>
+</body>
+</html>
